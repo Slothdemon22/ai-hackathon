@@ -567,36 +567,7 @@ export default function DashboardPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="border-gray-200">
-                  <CardHeader>
-                    <CardTitle>CV Templates</CardTitle>
-                    <CardDescription>Choose a professional template for your CV</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                      {["Modern", "Classic", "Creative", "Minimal", "Professional", "Executive"].map(
-                        (template, index) => (
-                          <div
-                            key={index}
-                            className="border rounded-lg overflow-hidden cursor-pointer hover:border-blue-500 transition-colors"
-                          >
-                            <div className="aspect-[3/4] bg-gray-100 flex items-center justify-center">
-                              <img
-                                src={`/placeholder.svg?height=300&width=225&text=${template}`}
-                                alt={`${template} template`}
-                                className="w-full h-full object-cover"
-                              />
-                            </div>
-                            <div className="p-3 text-center">
-                              <p className="font-medium">{template}</p>
-                              {index === 0 && <Badge className="mt-1 bg-blue-500">Popular</Badge>}
-                            </div>
-                          </div>
-                        ),
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
+                
               </div>
             )}
           </div>
