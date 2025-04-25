@@ -106,10 +106,11 @@ export default function DashboardPage() {
 
     // Log the file that would be sent to backend
     console.log("Sending file to backend:", files[0])
-    const response = await fetch("/api/upload", {
+    const response = await fetch("", {
       method: "POST",
       body: files[0],
     })
+    
     if (!response.ok) {
       toast.error("Error submitting resume", {
         description: "Please try again later",
@@ -170,14 +171,7 @@ export default function DashboardPage() {
     e.preventDefault()
 
     // Validate form
-    if (!formData.fullName || !formData.email || !formData.title || !formData.about) {
-      toast.error("Missing required fields", {
-        description: "Please fill in all required fields",
-      })
-      console.log("Form validation failed: Missing required fields")
-      return
-    }
-
+  
     // Filter out empty skills
     const filteredSkills = formData.skills.filter((skill) => skill.trim() !== "")
     if (filteredSkills.length === 0) {
@@ -194,34 +188,15 @@ export default function DashboardPage() {
 
     // Log the form data that would be sent to backend
     console.log("CV Generation Data:", {
-      ...formData,
+     
       skills: filteredSkills,
     })
     console.log("CV form submission initiated at:", new Date().toISOString())
     const Data={
-      ...formData,
+    
       skills: filteredSkills,
     };
-    // const response = await fetch("/api/generate-cv", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(Data),
-    // })
-    // if (!response.ok) {
-    //   toast.error("Error generating CV", {
-    //     description: "Please try again later",
-    //   })
-    //   console.log("Error: CV generation failed")
-    //   setIsSubmitting(false)
-    //   return
-    // }
-    // const data = await response.json()
-    // console.log("CV generated successfully:", data)
-    // toast.success("CV generated successfully", {
-    //   description: "Your CV is ready for download",
-    // })
+
     toast.success("CV generated successfully", {
       description: "Your CV is ready for download",
     })
@@ -430,70 +405,8 @@ export default function DashboardPage() {
                   <CardContent className="pt-6">
                     <form onSubmit={handleSubmitForm} className="space-y-6">
                       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                        <div className="space-y-2">
-                          <Label htmlFor="fullName" className="flex items-center gap-2">
-                            <UserIcon className="h-4 w-4 text-blue-500" />
-                            Full Name
-                          </Label>
-                          <Input
-                            id="fullName"
-                            name="fullName"
-                            value={formData.fullName}
-                            onChange={handleChange}
-                            placeholder="John Doe"
-                            className="border-gray-200 focus-visible:ring-blue-500"
-                            required
-                          />
-                        </div>
-
-                        <div className="space-y-2">
-                          <Label htmlFor="email" className="flex items-center gap-2">
-                            <MailIcon className="h-4 w-4 text-blue-500" />
-                            Email
-                          </Label>
-                          <Input
-                            id="email"
-                            name="email"
-                            type="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            placeholder="johndoe@example.com"
-                            className="border-gray-200 focus-visible:ring-blue-500"
-                            required
-                          />
-                        </div>
-
-                        <div className="space-y-2">
-                          <Label htmlFor="title" className="flex items-center gap-2">
-                            <BriefcaseIcon className="h-4 w-4 text-blue-500" />
-                            Job Title
-                          </Label>
-                          <Input
-                            id="title"
-                            name="title"
-                            value={formData.title}
-                            onChange={handleChange}
-                            placeholder="Software Engineer"
-                            className="border-gray-200 focus-visible:ring-blue-500"
-                            required
-                          />
-                        </div>
-
-                        <div className="space-y-2 md:col-span-2">
-                          <Label htmlFor="about" className="flex items-center gap-2">
-                            <FileTextIcon className="h-4 w-4 text-blue-500" />
-                            About You
-                          </Label>
-                          <Textarea
-                            id="about"
-                            name="about"
-                            value={formData.about}
-                            onChange={handleChange}
-                            placeholder="Tell us a little about yourself and your professional background"
-                            className="min-h-[120px] border-gray-200 focus-visible:ring-blue-500"
-                            required
-                          />
-                        </div>
+                       
+                     
 
                         <div className="space-y-3 md:col-span-2">
                           <Label htmlFor="skills" className="flex items-center gap-2">
@@ -560,7 +473,7 @@ export default function DashboardPage() {
                             Generating CV...
                           </>
                         ) : (
-                          "Generate Professional CV"
+                          "Recommmend Jobs"
                         )}
                       </Button>
                     </form>
